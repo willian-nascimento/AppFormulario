@@ -1,7 +1,6 @@
-import {Text, View} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 import {Button} from "../../components/Button";
 import {InputText} from "../../components/InputText";
-import {styles} from "./styles";
 
 export function DadosPessoais() {
     return (
@@ -13,3 +12,9 @@ export function DadosPessoais() {
         </View>
     );
 }
+
+export const styles = StyleSheet.create({
+    container: {
+        alignItems: "center"
+    }
+});
