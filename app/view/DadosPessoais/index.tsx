@@ -1,12 +1,13 @@
 import {ScrollView, StyleSheet, Text, View} from "react-native";
 import {Button} from "../../components/Button";
 import {InputText} from "../../components/InputText";
+import {Colors, Spacing} from "../../styles";
 
 export function DadosPessoais() {
     return (
         <View style={styles.container}>
-            <Text>Teste</Text>
-            <ScrollView>
+            <Text>Dados Pessoais</Text>
+            <ScrollView style={styles.inputView}>
                 <InputText textTitle="teste1" textPlaceholder="Teste1"/>
                 <InputText textTitle="teste2" textPlaceholder="Teste2"/>
                 <InputText textTitle="teste3" textPlaceholder="Teste3"/>
@@ -16,13 +17,21 @@ export function DadosPessoais() {
                 <InputText textTitle="teste7" textPlaceholder="Teste8"/>
                 <InputText textTitle="teste8" textPlaceholder="Teste8"/>
             </ScrollView>
-            <Button title="teste"/>
+            <Button title="Botao Teste"/>
         </View>
     );
 }
 
 export const styles = StyleSheet.create({
     container: {
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor: Colors.default.blue
+    },
+    inputView: {
+        width: "100%",
+        borderTopStartRadius: Spacing.default.px4,
+        borderTopEndRadius: Spacing.default.px4,
+        backgroundColor: Colors.default.white,
+        marginTop: 180
     }
 });
