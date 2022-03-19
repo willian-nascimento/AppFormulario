@@ -5,11 +5,17 @@ import { InputText } from "../../components/InputText";
 import { Colors, Spacing } from "../../styles";
 import { Button } from "../../components/Button";
 import { TimeLine } from '../../components/TimeLine/index';
+import { useNavigation } from '@react-navigation/native';
 
 import colors from "../../styles/colors";
 import spacing from "../../styles/spacing";
 
 export function AtencaoBasica() {
+
+    const navigation = useNavigation();
+    function handleBack() {
+        navigation.navigate("DadosPessoais");
+    }
 
     return (
         <View style={styles.container}>
@@ -43,6 +49,7 @@ export function AtencaoBasica() {
            </View>
             <Button
                 title="Voltar"
+                onPress={handleBack}
             />
         </View>
     )

@@ -14,10 +14,10 @@ import spacing from "../../styles/spacing";
 
 export function DadosPessoais() {
     
-    // const navigation = useNavigation();
-    // function handleStart() {
-    //     navigation.navigate('AtencaoBasica');
-    // }
+    const navigation = useNavigation();
+    function handleStart() {
+        navigation.navigate("AtencaoBasica");
+    }
     
     return (
         <View style={styles.container}>
@@ -65,19 +65,21 @@ export function DadosPessoais() {
                 <InputText
                     style={styles.text} 
                     textTitle="Quantidade de pessoas que votam no município" 
-                    textPlaceholder={""} />
-                <Button 
-                    title="Proximo"
-                    // onPress={handleStart} 
-                />
+                    textPlaceholder={""} />                
             </ScrollView>
+            <View style={styles.button}>
+            <Button 
+                    title="Proximo"
+                    onPress={handleStart}
+                />
+            </View>
         </View>
     );
 }
 
 export const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.default.blue
+        backgroundColor: Colors.default.blue,
     },
     inputView: {
         width: "100%",
@@ -86,6 +88,7 @@ export const styles = StyleSheet.create({
         borderTopEndRadius: Spacing.default.px4,
         backgroundColor: Colors.default.white,
         marginTop: 190,
+        marginBottom: -90
     },
     titlePerson: {
         position: "absolute",
@@ -113,9 +116,10 @@ export const styles = StyleSheet.create({
         height:spacing.px6,
         top: 15,
         borderRadius: 10
+    },
+    button: {
+        marginTop: -90,
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })
-function nextScreen(nextScreen: any) {
-    throw new Error('Function not implemented.');
-}
-
