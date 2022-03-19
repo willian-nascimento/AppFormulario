@@ -22,13 +22,19 @@ export const styles = StyleSheet.create({
         backgroundColor: Colors.default.blue,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: Spacing.default.px1,
-        height: Spacing.default.px6,
-        width: 120
+        position: 'absolute',
+        top:727,
+        width:135,
+        height:46,
+        borderRadius:5,
+        shadowRadius:8,
+        shadowOpacity: 0.5,
+        shadowOffset: { width: 10, height: 5 }
     },
     text: {
         color: Colors.default.white,
         fontSize: Spacing.default.px2,
-        fontFamily: Fonts.default.text
+        fontFamily: Fonts.default.text,
+        fontWeight:"500"
     }
 });

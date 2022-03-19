@@ -1,12 +1,10 @@
-import {View} from 'react-native';
+import React from 'react';
 
-import {DadosPessoais} from "./app/view/DadosPessoais";
+import { Router } from './app/router';
 
 export default function App() {
     return (
-        <View>
-            <DadosPessoais />
-        </View>
-    );
+            <Router/>
+    )
 }
 
