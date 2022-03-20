@@ -4,7 +4,7 @@ import { InputText } from "../../components/InputText";
 
 import { Colors, Spacing } from "../../styles";
 import { Button } from "../../components/Button";
-import { TimeLine } from '../../components/TimeLine/index';
+import { TimeLine } from '../../components/TimeLine/';
 import { useNavigation } from '@react-navigation/native';
 
 import colors from "../../styles/colors";
@@ -45,9 +45,10 @@ export function AtencaoBasica() {
                 <InputText
                     style={styles.text}
                     textTitle="Tipo de produção"
-                    textPlaceholder={""} />           
+                    textPlaceholder={""} />
            </View>
             <Button
+                color="gray"
                 title="Voltar"
                 onPress={handleBack}
             />

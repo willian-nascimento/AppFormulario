@@ -4,11 +4,21 @@ import {Colors, Fonts, Spacing} from "../../styles";
 
 interface ButtonProps extends TouchableOpacityProps{
     title: string;
+    color: string;
 }
-export function Button({ title, ...rest }: ButtonProps){
+
+export function Button({ title, color, ...rest }: ButtonProps){
+    function getBackgrundColor(color: string){
+        if(color == 'gray'){
+            return { backgroundColor: 'rgba(5, 60, 94, 0.26)'}
+        }else{
+            return {backgroundColor: Colors.default.blue}
+        }
+    }
+
     return(
         <TouchableOpacity
-            style={styles.container}
+            style={[styles.container, getBackgrundColor(color) ]}
             activeOpacity={0.7}
             {...rest}>
             <Text style={styles.text}>
@@ -20,7 +30,6 @@ export function Button({ title, ...rest }: ButtonProps){
 
 export const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.default.blue,
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
