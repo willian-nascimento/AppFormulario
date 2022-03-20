@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import colors from '../../styles/colors';
 import spacing from '../../styles/spacing';
 
 export function TimeLine() {
-  return( 
+  return(
     <View
         style={styles.line}
     />

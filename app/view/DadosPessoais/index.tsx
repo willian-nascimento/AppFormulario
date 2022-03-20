@@ -10,6 +10,7 @@ import {Colors, Spacing} from "../../styles";
 
 import colors from "../../styles/colors";
 import spacing from "../../styles/spacing";
+import {AtencaoBasica} from "../AtencaoBasica";
 
 
 export function DadosPessoais() {
@@ -17,7 +18,8 @@ export function DadosPessoais() {
     const navigation = useNavigation();
 
     function handleStart() {
-        navigation.navigate("AtencaoBasica");
+        // @ts-ignore
+        navigation.navigate('AtencaoBasica');
     }
 
     return (
