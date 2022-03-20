@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View } from "react-native";
-import { InputText } from "../../components/InputText";
+import {StyleSheet, Text, View} from "react-native";
+import {InputText} from "../../components/InputText";
 
-import { Colors, Spacing } from "../../styles";
-import { Button } from "../../components/Button";
-import { TimeLine } from '../../components/TimeLine/index';
-import { useNavigation } from '@react-navigation/native';
+import {Colors, Spacing} from "../../styles";
+import {Button} from "../../components/Button";
+import {TimeLine} from '../../components/TimeLine/';
+import {useNavigation} from '@react-navigation/native';
 
 import colors from "../../styles/colors";
 import spacing from "../../styles/spacing";
@@ -14,7 +14,8 @@ export function AtencaoBasica() {
 
     const navigation = useNavigation();
     function handleBack() {
-        navigation.navigate("DadosPessoais");
+        // @ts-ignore
+        navigation.navigate('DadosPessoais');
     }
 
     return (
@@ -45,9 +46,10 @@ export function AtencaoBasica() {
                 <InputText
                     style={styles.text}
                     textTitle="Tipo de produção"
-                    textPlaceholder={""} />           
+                    textPlaceholder={""} />
            </View>
             <Button
+                color="gray"
                 title="Voltar"
                 onPress={handleBack}
             />
