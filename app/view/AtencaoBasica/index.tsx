@@ -13,6 +13,7 @@ import spacing from "../../styles/spacing";
 export function AtencaoBasica() {
 
     const navigation = useNavigation();
+
     function handleBack() {
         // @ts-ignore
         navigation.navigate('DadosPessoais');
@@ -20,39 +21,26 @@ export function AtencaoBasica() {
 
     return (
         <View style={styles.container}>
-            <Text
-                style={styles.titlePerson}
-            >
-                Dados Pessoais
-            </Text>
-            <Text
-                style={styles.titleAtencion}
-            >
-                Atenção Básica
-            </Text>
-                <TimeLine />
-            <View
-                style={styles.inputView}
-            >
-                <Text
-                    style={styles.Atencion}
-                >
-                    Atenção Básica
-                </Text>
+            <Text style={styles.titlePerson}>Dados Pessoais</Text>
+            <Text style={styles.titleAtencion}>Atenção Básica</Text>
+            <TimeLine/>
+            <Text style={styles.Atencion}>Atenção Básica</Text>
+            <View style={styles.inputView}>
                 <InputText
                     style={styles.text}
                     textTitle="Principal fonte de renda da família"
-                    textPlaceholder={""} />
+                    textPlaceholder={""}/>
                 <InputText
                     style={styles.text}
                     textTitle="Tipo de produção"
-                    textPlaceholder={""} />
-           </View>
-            <Button
-                color="gray"
-                title="Voltar"
-                onPress={handleBack}
-            />
+                    textPlaceholder={""}/>
+
+                <Button
+                    color="gray"
+                    title="Voltar"
+                    onPress={handleBack}
+                />
+            </View>
         </View>
     )
 }
