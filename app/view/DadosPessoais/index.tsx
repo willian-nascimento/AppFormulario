@@ -7,7 +7,6 @@ import {Button} from "../../components/Button";
 import {TimeLine} from "../../components/TimeLine";
 import {Colors, Spacing} from "../../styles";
 
-
 import colors from "../../styles/colors";
 import spacing from "../../styles/spacing";
 import {AtencaoBasica} from "../AtencaoBasica";
@@ -24,16 +23,8 @@ export function DadosPessoais() {
 
     return (
         <View style={styles.container}>
-            <Text
-                style={styles.titlePerson}
-            >
-                Dados Pessoais
-            </Text>
-            <Text
-                style={styles.titleAtencion}
-            >
-                Atenção Básica
-            </Text>
+            <Text style={styles.titlePerson}>Dados Pessoais</Text>
+            <Text style={styles.titleAtencion}>Atenção Básica</Text>
             <TimeLine/>
             <ScrollView
                 style={styles.inputView}
@@ -69,14 +60,13 @@ export function DadosPessoais() {
                     style={styles.text}
                     textTitle="Quantidade de pessoas que votam no município"
                     textPlaceholder={""}/>
-            </ScrollView>
-            <View style={styles.button}>
+
                 <Button
                     color="default"
                     title="Proximo"
                     onPress={handleStart}
                 />
-            </View>
+            </ScrollView>
         </View>
     );
 }
@@ -92,7 +82,6 @@ export const styles = StyleSheet.create({
         borderTopEndRadius: Spacing.default.px4,
         backgroundColor: Colors.default.white,
         marginTop: 190,
-        marginBottom: -90
     },
     titlePerson: {
         position: "absolute",
@@ -122,7 +111,9 @@ export const styles = StyleSheet.create({
         borderRadius: 10
     },
     button: {
-        marginTop: -90,
+        // marginTop: 90,
+        //top: -90,
+        top: 10,
         justifyContent: 'center',
         alignItems: 'center',
     }
