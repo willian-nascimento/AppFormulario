@@ -4,7 +4,8 @@ import { InputText } from "../../components/InputText";
 
 import { Colors, Spacing } from "../../styles";
 import { Button } from "../../components/Button";
-import { TimeLine } from '../../components/TimeLine/index';
+import { TimeLine } from '../../components/TimeLine/';
+import { ButtonSelect } from '../../components/ButtonSelect';
 import { useNavigation } from '@react-navigation/native';
 
 import colors from "../../styles/colors";
@@ -13,31 +14,18 @@ import spacing from "../../styles/spacing";
 export function AtencaoBasica() {
 
     const navigation = useNavigation();
+
     function handleBack() {
-        navigation.navigate("DadosPessoais");
+        // @ts-ignore
+        navigation.navigate('DadosPessoais');
     }
 
     return (
         <View style={styles.container}>
-            <Text
-                style={styles.titlePerson}
-            >
-                Dados Pessoais
-            </Text>
-            <Text
-                style={styles.titleAtencion}
-            >
-                Atenção Básica
-            </Text>
-                <TimeLine />
-            <View
-                style={styles.inputView}
-            >
-                <Text
-                    style={styles.Atencion}
-                >
-                    Atenção Básica
-                </Text>
+            <Text style={styles.titlePerson}>Dados Pessoais</Text>
+            <Text style={styles.titleAtencion}>Atenção Básica</Text>
+            <TimeLine />
+            <View style={styles.inputView}>
                 <InputText
                     style={styles.text}
                     textTitle="Principal fonte de renda da família"
@@ -45,12 +33,30 @@ export function AtencaoBasica() {
                 <InputText
                     style={styles.text}
                     textTitle="Tipo de produção"
-                    textPlaceholder={""} />           
-           </View>
-            <Button
-                title="Voltar"
-                onPress={handleBack}
-            />
+                    textPlaceholder={""} />
+                <Text style={styles.Atencion}>
+                    Atenção Básica
+                </Text>
+                <View style={styles.select}>
+                    <ButtonSelect
+                        title={'Educação'} />
+                    <ButtonSelect
+                        title={'Educação'} />
+                    <ButtonSelect
+                        title={'Educação'} />
+                    <ButtonSelect
+                        title={'Educação'} />
+                </View>
+                <View style={styles.viewerButton}>
+                    <Button
+                        color="gray"
+                        title="Voltar"
+                        onPress={handleBack} />
+                    <Button
+                        title='Enviar'
+                        color={''} />
+                </View>
+            </View>
         </View>
     )
 }
@@ -102,4 +108,15 @@ export const styles = StyleSheet.create({
         fontWeight: '500',
         fontSize: 13
     },
+    viewerButton: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        paddingHorizontal: 10,
+        right: 130
+    },
+    select: {
+        flex: 1,
+        flexDirection: 'row-reverse',
+    }
 })

@@ -1,14 +1,25 @@
 import React from "react";
 import {StyleSheet, Text, TouchableOpacity, TouchableOpacityProps} from "react-native";
 import {Colors, Fonts, Spacing} from "../../styles";
+import spacing from "../../styles/spacing";
 
 interface ButtonProps extends TouchableOpacityProps{
     title: string;
+    color: string;
 }
-export function Button({ title, ...rest }: ButtonProps){
+
+export function Button({ title, color, ...rest }: ButtonProps){
+    function setBackgrundColor(color: string){
+        if(color == 'gray'){
+            return { backgroundColor: 'rgba(5, 60, 94, 0.26)'}
+        }else{
+            return {backgroundColor: Colors.default.blue}
+        }
+    }
+
     return(
         <TouchableOpacity
-            style={styles.container}
+            style={[styles.container, setBackgrundColor(color)]}
             activeOpacity={0.7}
             {...rest}>
             <Text style={styles.text}>
@@ -20,11 +31,11 @@ export function Button({ title, ...rest }: ButtonProps){
 
 export const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.default.blue,
         justifyContent: 'center',
         alignItems: 'center',
-        position: 'absolute',
-        top:727,
+        position: 'relative',
+        left: 115,
+        top: spacing.px7,
         width:135,
         height:46,
         borderRadius:5,
