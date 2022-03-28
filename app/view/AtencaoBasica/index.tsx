@@ -1,11 +1,15 @@
 import React from 'react';
-import {StyleSheet, Text, View} from "react-native";
-import {InputText} from "../../components/InputText";
+import { StyleSheet, Text, View } from "react-native";
+import { InputText } from "../../components/InputText";
 
-import {Colors, Spacing} from "../../styles";
-import {Button} from "../../components/Button";
-import {TimeLine} from '../../components/TimeLine/';
-import {useNavigation} from '@react-navigation/native';
+import { Colors, Spacing } from "../../styles";
+import { Button } from "../../components/Button";
+import { TimeLine } from '../../components/TimeLine/';
+import { ButtonSelect } from '../../components/ButtonSelect';
+import { useNavigation } from '@react-navigation/native';
+
+import colors from "../../styles/colors";
+import spacing from "../../styles/spacing";
 
 import colors from "../../styles/colors";
 import spacing from "../../styles/spacing";
@@ -23,7 +27,7 @@ export function AtencaoBasica() {
         <View style={styles.container}>
             <Text style={styles.titlePerson}>Dados Pessoais</Text>
             <Text style={styles.titleAtencion}>Atenção Básica</Text>
-            <TimeLine/>
+            <TimeLine />
             <Text style={styles.Atencion}>Atenção Básica</Text>
             <View style={styles.inputView}>
                 <InputText
@@ -33,8 +37,29 @@ export function AtencaoBasica() {
                 <InputText
                     style={styles.text}
                     textTitle="Tipo de produção"
-                    textPlaceholder={""}/>
-
+                    textPlaceholder={""} />
+                <Text style={styles.Atencion}>
+                    Atenção Básica
+                </Text>
+                <View style={styles.select}>
+                    <ButtonSelect
+                        title={'Educação'} />
+                    <ButtonSelect
+                        title={'Educação'} />
+                    <ButtonSelect
+                        title={'Educação'} />
+                    <ButtonSelect
+                        title={'Educação'} />
+                </View>
+                <View style={styles.viewerButton}>
+                    <Button
+                        color="gray"
+                        title="Voltar"
+                        onPress={handleBack} />
+                    <Button
+                        title='Enviar'
+                        color={''} />
+                </View>
                 <Button
                     color="gray"
                     title="Voltar"
@@ -92,4 +117,15 @@ export const styles = StyleSheet.create({
         fontWeight: '500',
         fontSize: 13
     },
+    viewerButton: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        paddingHorizontal: 10,
+        right: 130
+    },
+    select: {
+        flex: 1,
+        flexDirection: 'row-reverse',
+    }
 })

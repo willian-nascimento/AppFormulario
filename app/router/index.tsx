@@ -14,7 +14,7 @@ export function Router() {
             screenOptions={{
                 headerShown: false
             }}
-            initialRouteName="DadosPessoais">
+            initialRouteName="AtencaoBasica">
             <Stack.Screen name="DadosPessoais" component={DadosPessoais}/>
             <Stack.Screen name="AtencaoBasica" component={AtencaoBasica} />
         </Stack.Navigator>
