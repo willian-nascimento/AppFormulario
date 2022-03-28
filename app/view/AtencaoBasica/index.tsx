@@ -11,6 +11,9 @@ import { useNavigation } from '@react-navigation/native';
 import colors from "../../styles/colors";
 import spacing from "../../styles/spacing";
 
+import colors from "../../styles/colors";
+import spacing from "../../styles/spacing";
+
 export function AtencaoBasica() {
 
     const navigation = useNavigation();
@@ -25,11 +28,12 @@ export function AtencaoBasica() {
             <Text style={styles.titlePerson}>Dados Pessoais</Text>
             <Text style={styles.titleAtencion}>Atenção Básica</Text>
             <TimeLine />
+            <Text style={styles.Atencion}>Atenção Básica</Text>
             <View style={styles.inputView}>
                 <InputText
                     style={styles.text}
                     textTitle="Principal fonte de renda da família"
-                    textPlaceholder={""} />
+                    textPlaceholder={""}/>
                 <InputText
                     style={styles.text}
                     textTitle="Tipo de produção"
@@ -56,6 +60,11 @@ export function AtencaoBasica() {
                         title='Enviar'
                         color={''} />
                 </View>
+                <Button
+                    color="gray"
+                    title="Voltar"
+                    onPress={handleBack}
+                />
             </View>
         </View>
     )
