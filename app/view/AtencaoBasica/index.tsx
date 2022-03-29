@@ -8,12 +8,6 @@ import { TimeLine } from '../../components/TimeLine/';
 import { ButtonSelect } from '../../components/ButtonSelect';
 import { useNavigation } from '@react-navigation/native';
 
-import colors from "../../styles/colors";
-import spacing from "../../styles/spacing";
-
-import colors from "../../styles/colors";
-import spacing from "../../styles/spacing";
-
 export function AtencaoBasica() {
 
     const navigation = useNavigation();
@@ -45,7 +39,7 @@ export function AtencaoBasica() {
                     <ButtonSelect
                         title={'Educação'} />
                     <ButtonSelect
-                        title={'Educação'} />
+                        title={'Educação'} active={true} />
                     <ButtonSelect
                         title={'Educação'} />
                     <ButtonSelect
@@ -84,35 +78,35 @@ export const styles = StyleSheet.create({
     },
     titlePerson: {
         position: "absolute",
-        width: spacing.px10,
-        left: spacing.px3,
-        top: spacing.px10,
-        color: colors.white,
+        width: Spacing.default.px10,
+        left: Spacing.default.px3,
+        top: Spacing.default.px10,
+        color: Colors.default.white,
         fontWeight: "500",
         fontSize: 14,
     },
     titleAtencion: {
         position: "absolute",
-        width: spacing.px10,
+        width: Spacing.default.px10,
         left: 140,
-        top: spacing.px10,
-        color: colors.white,
+        top: Spacing.default.px10,
+        color: Colors.default.white,
         fontWeight: "500",
         fontSize: 14,
     },
     text: {
         fontWeight: "500",
         fontSize: 13,
-        backgroundColor: colors.gray,
+        backgroundColor: Colors.default.gray,
         width: 340,
-        height: spacing.px6,
+        height: Spacing.default.px6,
         top: 15,
         borderRadius: 10
     },
     Atencion: {
         position: 'absolute',
         width: 93,
-        left: spacing.px3,
+        left: Spacing.default.px3,
         top: 250,
         fontWeight: '500',
         fontSize: 13
