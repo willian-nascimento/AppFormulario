@@ -1,5 +1,5 @@
 export default {
-    heading: 'Jost_400Regular',
-    text: 'Jost_600SemiBold',
-    complement: 'Jost_600SemiBold',
+    heading: 'Inter_400Regular',
+    text: 'Inter_500Medium',
+    complement: 'Inter_700Bold',
 };

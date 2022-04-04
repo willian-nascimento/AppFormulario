@@ -1,6 +1,6 @@
-import React from "react";
-import {StyleSheet, Text, TextInput, TextInputProps, View} from "react-native";
-import {Colors, Spacing} from "../../styles";
+import React from 'react';
+import {StyleSheet, Text, TextInput, TextInputProps, View} from 'react-native';
+import {Colors, Spacing} from '../../styles';
 
 interface InputTextProps extends TextInputProps{
     textTitle: string;

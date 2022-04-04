@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from "@react-navigation/stack";
+import {createStackNavigator} from '@react-navigation/stack';
 
 import {DadosPessoais} from '../view/DadosPessoais/';
 import {AtencaoBasica} from '../view/AtencaoBasica/';
@@ -14,9 +14,9 @@ export function Router() {
             screenOptions={{
                 headerShown: false
             }}
-            initialRouteName="AtencaoBasica">
-            <Stack.Screen name="DadosPessoais" component={DadosPessoais}/>
-            <Stack.Screen name="AtencaoBasica" component={AtencaoBasica} />
+            initialRouteName='DadosPessoais'>
+            <Stack.Screen name='DadosPessoais' component={DadosPessoais}/>
+            <Stack.Screen name='AtencaoBasica' component={AtencaoBasica} />
         </Stack.Navigator>
         </NavigationContainer>
     )

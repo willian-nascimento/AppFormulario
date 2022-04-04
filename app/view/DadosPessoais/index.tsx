@@ -1,15 +1,14 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View} from "react-native";
-import {InputText} from "../../components/InputText";
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {InputText} from '../../components/InputText';
 import {useNavigation} from '@react-navigation/native';
 
-import {Button} from "../../components/Button";
-import {TimeLine} from "../../components/TimeLine";
-import {Colors, Spacing} from "../../styles";
+import {Button} from '../../components/Button';
+import {TimeLine} from '../../components/TimeLine';
+import {Colors, Spacing} from '../../styles';
 
-import colors from "../../styles/colors";
-import spacing from "../../styles/spacing";
-import {AtencaoBasica} from "../AtencaoBasica";
+import colors from '../../styles/colors';
+import spacing from '../../styles/spacing';
 
 
 export function DadosPessoais() {
@@ -22,52 +21,52 @@ export function DadosPessoais() {
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <Text style={styles.titlePerson}>Dados Pessoais</Text>
             <Text style={styles.titleAtencion}>Atenção Básica</Text>
             <TimeLine/>
-            <ScrollView
+            <View
                 style={styles.inputView}
             >
                 <InputText
                     style={styles.text}
-                    textTitle="Cidade"
-                    textPlaceholder={""}/>
+                    textTitle='Cidade'
+                    textPlaceholder={''}/>
                 <InputText
                     style={styles.text}
-                    textTitle="Agrovila"
-                    textPlaceholder={""}/>
+                    textTitle='Agrovila'
+                    textPlaceholder={''}/>
                 <InputText
                     style={styles.text}
-                    textTitle="Quantidade de pessoas que residem na casa"
-                    textPlaceholder={""}/>
+                    textTitle='Quantidade de pessoas que residem na casa'
+                    textPlaceholder={''}/>
                 <InputText
                     style={styles.text}
-                    textTitle="Quantidade pessoas que não residem no município" textPlaceholder={""}/>
+                    textTitle='Quantidade pessoas que não residem no município' textPlaceholder={''}/>
                 <InputText
                     style={styles.text}
-                    textTitle="Para qual estado mudou-se"
-                    textPlaceholder={""}/>
+                    textTitle='Para qual estado mudou-se'
+                    textPlaceholder={''}/>
                 <InputText
                     style={styles.text}
-                    textTitle="Quantidade de título transferido"
-                    textPlaceholder={""}/>
+                    textTitle='Quantidade de título transferido'
+                    textPlaceholder={''}/>
                 <InputText
                     style={styles.text}
-                    textTitle="Quantidades de pessoas que votam"
-                    textPlaceholder={""}/>
+                    textTitle='Quantidades de pessoas que votam'
+                    textPlaceholder={''}/>
                 <InputText
                     style={styles.text}
-                    textTitle="Quantidade de pessoas que votam no município"
-                    textPlaceholder={""}/>
+                    textTitle='Quantidade de pessoas que votam no município'
+                    textPlaceholder={''}/>
 
                 <Button
-                    color="default"
-                    title="Proximo"
+                    color='default'
+                    title='Proximo'
                     onPress={handleStart}
                 />
-            </ScrollView>
-        </View>
+            </View>
+        </ScrollView>
     );
 }
 
@@ -76,36 +75,34 @@ export const styles = StyleSheet.create({
         backgroundColor: Colors.default.blue,
     },
     inputView: {
-        width: "100%",
-        height: "100%",
+        width: '100%',
+        height: '100%',
         borderTopStartRadius: Spacing.default.px4,
         borderTopEndRadius: Spacing.default.px4,
         backgroundColor: Colors.default.white,
         marginTop: 190,
     },
     titlePerson: {
-        position: "absolute",
-        width: spacing.px10,
+        position: 'absolute',
         left: spacing.px3,
-        top: spacing.px10,
+        top: 100,
         color: colors.white,
-        fontWeight: "500",
+        fontWeight: '500',
         fontSize: 14,
     },
     titleAtencion: {
-        position: "absolute",
-        width: spacing.px10,
+        position: 'absolute',
         left: 140,
-        top: spacing.px10,
+        top: 100,
         color: colors.white,
-        fontWeight: "500",
+        fontWeight: '500',
         fontSize: 14,
     },
     text: {
-        fontWeight: "500",
+        fontWeight: '500',
         fontSize: 13,
         backgroundColor: colors.gray,
-        width: 340,
+        width: '100%',
         height: spacing.px6,
         top: 15,
         borderRadius: 10

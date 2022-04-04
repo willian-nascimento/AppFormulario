@@ -1,8 +1,8 @@
-import React from "react";
-import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
-import { Colors } from "../../styles";
-import colors from "../../styles/colors";
-import spacing from "../../styles/spacing";
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import { Colors } from '../../styles';
+import colors from '../../styles/colors';
+import spacing from '../../styles/spacing';
 
 interface ButtonSelectProps extends TouchableOpacityProps {
     title: string;
@@ -30,9 +30,9 @@ export const styles = StyleSheet.create({
         position: 'relative',
         left: 115,
         top: spacing.px7,
-        width:135,
+        width:110,
         height:46,
-        borderRadius:5,
+        borderRadius:16,
         backgroundColor: Colors.default.red
     },
     containerActice:{
@@ -40,7 +40,6 @@ export const styles = StyleSheet.create({
     },
     text: {
         position: 'absolute',
-        buttom: 22,
         fontWeight: '600',
         fontSize: 13,
         textAlign: 'center',
