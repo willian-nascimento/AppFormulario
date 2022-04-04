@@ -1,7 +1,7 @@
-import React from "react";
-import {StyleSheet, Text, TouchableOpacity, TouchableOpacityProps} from "react-native";
-import {Colors, Fonts, Spacing} from "../../styles";
-import spacing from "../../styles/spacing";
+import React from 'react';
+import {StyleSheet, Text, TouchableOpacity, TouchableOpacityProps} from 'react-native';
+import {Colors, Fonts, Spacing} from '../../styles';
+import spacing from '../../styles/spacing';
 
 interface ButtonProps extends TouchableOpacityProps{
     title: string;
@@ -47,6 +47,6 @@ export const styles = StyleSheet.create({
         color: Colors.default.white,
         fontSize: Spacing.default.px2,
         fontFamily: Fonts.default.text,
-        fontWeight:"500"
+        fontWeight:'500'
     }
 });

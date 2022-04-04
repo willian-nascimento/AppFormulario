@@ -14,7 +14,7 @@ export function TimeLine() {
 export const styles = StyleSheet.create({
     line:{
         position:'absolute',
-        width: 80,
+        width: 100,
         height:7,
         left: spacing.px3,
         top: 130,
