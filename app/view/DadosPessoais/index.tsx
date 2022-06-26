@@ -1,64 +1,75 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {InputText} from '../../components/InputText';
-import {useNavigation} from '@react-navigation/native';
+import { ScrollView, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import {Button} from '../../components/Button';
-import {TimeLine} from '../../components/TimeLine';
-import {Colors, Spacing} from '../../styles';
+import { Button } from '../../components/Button';
+import { TimeLine } from '../../components/TimeLine';
+import { ButtonSelect } from '../../components/ButtonSelect';
+import { InputText } from '../../components/InputText';
 
-import colors from '../../styles/colors';
-import spacing from '../../styles/spacing';
-
+import styles from './styles';
 
 export function DadosPessoais() {
 
     const navigation = useNavigation();
 
     function handleStart() {
-        // @ts-ignore
-        navigation.navigate('AtencaoBasica');
+       console.log("teste")
     }
 
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.titlePerson}>Dados Pessoais</Text>
-            <Text style={styles.titleAtencion}>Atenção Básica</Text>
-            <TimeLine/>
-            <View
-                style={styles.inputView}
-            >
+            <TimeLine />
+            <View style={styles.inputView}>
                 <InputText
                     style={styles.text}
                     textTitle='Cidade'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
                 <InputText
                     style={styles.text}
                     textTitle='Agrovila'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidade de pessoas que residem na casa'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
                 <InputText
                     style={styles.text}
-                    textTitle='Quantidade pessoas que não residem no município' textPlaceholder={''}/>
+                    textTitle='Quantidade pessoas que não residem no município' textPlaceholder={''} />
                 <InputText
                     style={styles.text}
                     textTitle='Para qual estado mudou-se'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidade de título transferido'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidades de pessoas que votam'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidade de pessoas que votam no município'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
+                <View style={styles.select}>
+                    <ButtonSelect title={'Educação'} active={true} />
+                    <ButtonSelect title={'Saneamento'} active={true} />
+                    <ButtonSelect title={'Transporte'} active={true} />
+                    <ButtonSelect title={'Saúde'} active={true} />
+                    <ButtonSelect title={'Agricultura'} active={true} />
+                    <ButtonSelect title={'Esporte e Lazer'} active={true} />
+                </View>
+
+                <InputText
+                    style={styles.text}
+                    textTitle='Principal fonte de renda da família'
+                    textPlaceholder={''} />
+                <InputText
+                    style={styles.text}
+                    textTitle='Tipo de produção'
+                    textPlaceholder={''} />
 
                 <Button
                     color='default'
@@ -69,49 +80,3 @@ export function DadosPessoais() {
         </ScrollView>
     );
 }
-
-export const styles = StyleSheet.create({
-    container: {
-        backgroundColor: Colors.default.blue,
-    },
-    inputView: {
-        width: '100%',
-        height: '100%',
-        borderTopStartRadius: Spacing.default.px4,
-        borderTopEndRadius: Spacing.default.px4,
-        backgroundColor: Colors.default.white,
-        marginTop: 190,
-    },
-    titlePerson: {
-        position: 'absolute',
-        left: spacing.px3,
-        top: 100,
-        color: colors.white,
-        fontWeight: '500',
-        fontSize: 14,
-    },
-    titleAtencion: {
-        position: 'absolute',
-        left: 140,
-        top: 100,
-        color: colors.white,
-        fontWeight: '500',
-        fontSize: 14,
-    },
-    text: {
-        fontWeight: '500',
-        fontSize: 13,
-        backgroundColor: colors.gray,
-        width: '100%',
-        height: spacing.px6,
-        top: 15,
-        borderRadius: 10
-    },
-    button: {
-        // marginTop: 90,
-        //top: -90,
-        top: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-})
