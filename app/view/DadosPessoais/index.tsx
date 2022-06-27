@@ -8,13 +8,15 @@ import { ButtonSelect } from '../../components/ButtonSelect';
 import { InputText } from '../../components/InputText';
 
 import styles from './styles';
+import { Mongo } from '../../database/Mongo';
+
 
 export function DadosPessoais() {
 
     const navigation = useNavigation();
 
     function handleStart() {
-       console.log("teste")
+        new Mongo().conectMongo();
     }
 
     return (
@@ -73,7 +75,7 @@ export function DadosPessoais() {
 
                 <Button
                     color='default'
-                    title='Proximo'
+                    title='Enviar'
                     onPress={handleStart}
                 />
             </View>
