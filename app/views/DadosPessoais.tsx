@@ -1,14 +1,17 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { Button } from '../../components/Button';
-import { TimeLine } from '../../components/TimeLine';
-import { ButtonSelect } from '../../components/ButtonSelect';
-import { InputText } from '../../components/InputText';
+import { Button } from '../components/Button';
+import { TimeLine } from '../components/TimeLine';
+import { ButtonSelect } from '../components/ButtonSelect';
+import { InputText } from '../components/InputText';
 
-import styles from './styles';
-import { Mongo } from '../../database/Mongo';
+import { ClientApi } from '../models/ClientApi';
+
+import { Colors, Spacing } from "../styles";
+import colors from "../styles/colors";
+import spacing from "../styles/spacing";
 
 
 export function DadosPessoais() {
@@ -16,7 +19,7 @@ export function DadosPessoais() {
     const navigation = useNavigation();
 
     function handleStart() {
-        new Mongo().conectMongo();
+        new ClientApi().conectApi();
     }
 
     return (
@@ -82,3 +85,57 @@ export function DadosPessoais() {
         </ScrollView>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: Colors.default.blue,
+    },
+    inputView: {
+        width: '100%',
+        height: '100%',
+        borderTopStartRadius: Spacing.default.px4,
+        borderTopEndRadius: Spacing.default.px4,
+        backgroundColor: Colors.default.white,
+        marginTop: 190,
+    },
+    titlePerson: {
+        position: 'absolute',
+        left: spacing.px3,
+        top: 100,
+        color: colors.white,
+        fontWeight: '500',
+        fontSize: 14,
+    },
+    titleAtencion: {
+        position: 'absolute',
+        left: 140,
+        top: 100,
+        color: colors.white,
+        fontWeight: '500',
+        fontSize: 14,
+    },
+    text: {
+        fontWeight: '500',
+        fontSize: 13,
+        backgroundColor: colors.gray,
+        width: '100%',
+        height: spacing.px6,
+        top: 15,
+        borderRadius: 10
+    },
+    button: {
+        top: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    select: {
+        position: 'relative',
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'stretch',
+        width: '100%',
+        left: -115,
+        justifyContent: 'space-evenly',
+    }
+})

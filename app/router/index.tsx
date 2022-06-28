@@ -2,7 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {DadosPessoais} from '../view/DadosPessoais/';
+import {DadosPessoais} from '../views/DadosPessoais';
 
 const Stack = createStackNavigator();
 
