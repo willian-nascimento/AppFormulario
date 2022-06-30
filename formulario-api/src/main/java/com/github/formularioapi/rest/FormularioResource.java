@@ -1,20 +1,21 @@
 package com.github.formularioapi.rest;
 
-import com.github.formularioapi.core.FormularioService;
+import com.github.formularioapi.core.dto.FormularioDTO;
+import com.github.formularioapi.core.formulario.Formulario;
+import com.github.formularioapi.core.formulario.FormularioService;
+import com.github.formularioapi.core.util.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/formulario")
+@RequestMapping("/api/cadastro")
 public class FormularioResource {
     @Autowired FormularioService formularioService;
-    @GetMapping
-    public ResponseEntity<String> carregaId(){
-        return new ResponseEntity<>(formularioService.save(), HttpStatus.OK);
-    }
 
+    @PostMapping("/salvar")
+    public ResponseEntity<String> realizaCadastro(@RequestBody FormularioDTO dto) {
+        return new ResponseEntity<>(formularioService.save(ObjectMapper.map(dto, Formulario.class)), HttpStatus.OK);
+    }
 }
