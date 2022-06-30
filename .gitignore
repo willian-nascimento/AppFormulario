@@ -1,6 +1,18 @@
-node_modules/
-.expo/
-dist/
+#Geral
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+
+
+
+#mobile
+**/node_modules/**
+**/.expo/
+**/dist/
 npm-debug.*
 *.jks
 *.p8
@@ -8,8 +20,36 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
-web-build/
-.idea/
+**/web-build/
+*.DS_Store
 
-# macOS
-.DS_Store
+#backend
+
+HELP.md
+**/target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/

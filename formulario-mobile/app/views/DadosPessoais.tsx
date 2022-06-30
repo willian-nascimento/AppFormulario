@@ -1,14 +1,17 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {InputText} from '../../components/InputText';
-import {useNavigation} from '@react-navigation/native';
+import { ScrollView, Text, View, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import {Button} from '../../components/Button';
-import {TimeLine} from '../../components/TimeLine';
-import {Colors, Spacing} from '../../styles';
+import { Button } from '../components/Button';
+import { TimeLine } from '../components/TimeLine';
+import { ButtonSelect } from '../components/ButtonSelect';
+import { InputText } from '../components/InputText';
 
-import colors from '../../styles/colors';
-import spacing from '../../styles/spacing';
+import { ClientApi } from '../models/ClientApi';
+
+import { Colors, Spacing } from "../styles";
+import colors from "../styles/colors";
+import spacing from "../styles/spacing";
 
 
 export function DadosPessoais() {
@@ -16,53 +19,66 @@ export function DadosPessoais() {
     const navigation = useNavigation();
 
     function handleStart() {
-        // @ts-ignore
-        navigation.navigate('AtencaoBasica');
+        new ClientApi().conectApi();
     }
 
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.titlePerson}>Dados Pessoais</Text>
-            <Text style={styles.titleAtencion}>Atenção Básica</Text>
-            <TimeLine/>
-            <View
-                style={styles.inputView}
-            >
+            <TimeLine />
+            <View style={styles.inputView}>
                 <InputText
                     style={styles.text}
                     textTitle='Cidade'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
                 <InputText
                     style={styles.text}
                     textTitle='Agrovila'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidade de pessoas que residem na casa'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
                 <InputText
                     style={styles.text}
-                    textTitle='Quantidade pessoas que não residem no município' textPlaceholder={''}/>
+                    textTitle='Quantidade pessoas que não residem no município' textPlaceholder={''} />
                 <InputText
                     style={styles.text}
                     textTitle='Para qual estado mudou-se'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidade de título transferido'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidades de pessoas que votam'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidade de pessoas que votam no município'
-                    textPlaceholder={''}/>
+                    textPlaceholder={''} />
+                <View style={styles.select}>
+                    <ButtonSelect title={'Educação'} active={true} />
+                    <ButtonSelect title={'Saneamento'} active={true} />
+                    <ButtonSelect title={'Transporte'} active={true} />
+                    <ButtonSelect title={'Saúde'} active={true} />
+                    <ButtonSelect title={'Agricultura'} active={true} />
+                    <ButtonSelect title={'Esporte e Lazer'} active={true} />
+                </View>
+
+                <InputText
+                    style={styles.text}
+                    textTitle='Principal fonte de renda da família'
+                    textPlaceholder={''} />
+                <InputText
+                    style={styles.text}
+                    textTitle='Tipo de produção'
+                    textPlaceholder={''} />
 
                 <Button
                     color='default'
-                    title='Proximo'
+                    title='Enviar'
                     onPress={handleStart}
                 />
             </View>
@@ -70,7 +86,7 @@ export function DadosPessoais() {
     );
 }
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         backgroundColor: Colors.default.blue,
     },
@@ -108,10 +124,18 @@ export const styles = StyleSheet.create({
         borderRadius: 10
     },
     button: {
-        // marginTop: 90,
-        //top: -90,
         top: 10,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    select: {
+        position: 'relative',
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'stretch',
+        width: '100%',
+        left: -115,
+        justifyContent: 'space-evenly',
     }
 })
