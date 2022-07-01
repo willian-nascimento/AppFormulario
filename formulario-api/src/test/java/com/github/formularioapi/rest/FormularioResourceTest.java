@@ -18,9 +18,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class FormularioResourceTest {
-    private final TestRestTemplate testRestTemplate = new TestRestTemplate();
+    @Autowired private TestRestTemplate testRestTemplate;
 
-    private final FormularioService formularioService = new FormularioService();
+    @Autowired private FormularioService formularioService;
 
     @Test void carregaIdTest(){
         FormularioDTO dto = new FormularioDTO();
