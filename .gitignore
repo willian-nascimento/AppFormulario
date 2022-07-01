@@ -10,7 +10,8 @@
 
 
 #mobile
-**/node_modules/**
+**/node
+**/node_modules/
 **/.expo/
 **/dist/
 npm-debug.*
