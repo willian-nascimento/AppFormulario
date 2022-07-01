@@ -1,7 +1,8 @@
 package com.github.formularioapi.rest;
 
-import com.github.formularioapi.core.dto.EnderecoDTO;
-import com.github.formularioapi.core.dto.FormularioDTO;
+import com.github.formularioapi.core.atencaobasica.AtencaoBasicaDTO;
+import com.github.formularioapi.core.endereco.EnderecoDTO;
+import com.github.formularioapi.core.formulario.FormularioDTO;
 import com.github.formularioapi.core.formulario.FormularioService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -25,9 +26,15 @@ class FormularioResourceTest {
     @Test void carregaIdTest(){
         FormularioDTO dto = new FormularioDTO();
         EnderecoDTO enderecoDTO = new EnderecoDTO();
+        AtencaoBasicaDTO atencaoBasicaDTO = new AtencaoBasicaDTO();
         enderecoDTO.setCep("1234");
         dto.setNameUser("Teste");
+        atencaoBasicaDTO.setAgricultura(true);
+        atencaoBasicaDTO.setEducacao(true);
+        atencaoBasicaDTO.setEsporteLazer(true);
+        atencaoBasicaDTO.setSaneamento(true);
         dto.setEndereco(enderecoDTO);
+        dto.setAtencaobasica(atencaoBasicaDTO);
 
         HttpEntity<FormularioDTO> httpEntity = new HttpEntity<>(dto);
         ResponseEntity<String> response = testRestTemplate

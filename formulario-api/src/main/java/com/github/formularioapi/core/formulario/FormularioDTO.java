@@ -1,32 +1,15 @@
 package com.github.formularioapi.core.formulario;
 
-import com.github.formularioapi.core.atencaobasica.AtencaoBasica;
-import com.github.formularioapi.core.endereco.Endereco;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.github.formularioapi.core.atencaobasica.AtencaoBasicaDTO;
+import com.github.formularioapi.core.endereco.EnderecoDTO;
 
-import javax.persistence.*;
-
-@Document public class Formulario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+public class FormularioDTO {
     private String nameUser;
     private int quantidadeMoradores;
     private String zonaEleitoral;
     private String fonteRenda;
-    @OneToMany(cascade = CascadeType.PERSIST) @JoinColumn(name = "cep")
-    private Endereco endereco;
-    @OneToMany(cascade = CascadeType.PERSIST) @JoinColumn(name = "id")
-    private AtencaoBasica atencaoBasica;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    private EnderecoDTO endereco;
+    private AtencaoBasicaDTO atencaobasica;
 
     public String getNameUser() {
         return nameUser;
@@ -60,19 +43,19 @@ import javax.persistence.*;
         this.fonteRenda = fonteRenda;
     }
 
-    public Endereco getEndereco() {
+    public EnderecoDTO getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEndereco(EnderecoDTO endereco) {
         this.endereco = endereco;
     }
 
-    public AtencaoBasica getAtencaoBasica() {
-        return atencaoBasica;
+    public AtencaoBasicaDTO getAtencaobasica() {
+        return atencaobasica;
     }
 
-    public void setAtencaoBasica(AtencaoBasica atencaoBasica) {
-        this.atencaoBasica = atencaoBasica;
+    public void setAtencaobasica(AtencaoBasicaDTO atencaobasica) {
+        this.atencaobasica = atencaobasica;
     }
 }
