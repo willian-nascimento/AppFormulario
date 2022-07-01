@@ -10,36 +10,30 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>formulario-mobile</artifactId>
+    <artifactId>${parent.artifactId}-mobile</artifactId>
     <version>1.0</version>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.11.3</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
-                        <id>install node and npm</id>
+                        <id>run-npm-install</id>
+                        <phase>compile</phase>
                         <goals>
-                            <goal>install-node-and-npm</goal>
+                            <goal>exec</goal>
                         </goals>
-                    </execution>
-                    <execution>
-                        <id>npm install</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <phase>generate-resources</phase>
                         <configuration>
-                            <arguments>run build</arguments>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>install</argument>
+                            </arguments>
                         </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <nodeVersion>v14.17.5</nodeVersion>
-                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -55,7 +49,7 @@
                             <outputDirectory>${basedir}/target/classes/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${basedir}/../my-project-frontend/build</directory>
+                                    <directory>${basedir}/../${artifactId}/build</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>
