@@ -3,8 +3,6 @@ package com.github.formularioapi.core.formulario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class FormularioService {
     @Autowired FormularioRepository repository;
