@@ -8,12 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 @Document public class Endereco {
-    @Id
-    private String cep;
+    @Id private String cep;
     private String cidade;
-    private String bairro;
+    private String agovila;
     private int numeroCasa;
-
     @ManyToOne(fetch = FetchType.EAGER)
     private Formulario formulario;
 
@@ -33,12 +31,12 @@ import javax.persistence.ManyToOne;
         this.cidade = cidade;
     }
 
-    public String getBairro() {
-        return bairro;
+    public String getAgovila() {
+        return agovila;
     }
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
+    public void setAgovila(String agovila) {
+        this.agovila = agovila;
     }
 
     public int getNumeroCasa() {
