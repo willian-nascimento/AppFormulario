@@ -1,21 +1,10 @@
-package com.github.formularioapi.core.endereco;
+package com.github.formularioapi.core.dto;
 
-import com.github.formularioapi.core.formulario.Formulario;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-
-@Document public class Endereco {
-    @Id
+public class EnderecoDTO {
     private String cep;
     private String cidade;
     private String bairro;
     private int numeroCasa;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Formulario formulario;
 
     public String getCep() {
         return cep;
@@ -47,13 +36,5 @@ import javax.persistence.ManyToOne;
 
     public void setNumeroCasa(int numeroCasa) {
         this.numeroCasa = numeroCasa;
-    }
-
-    public Formulario getFormulario() {
-        return formulario;
-    }
-
-    public void setFormulario(Formulario formulario) {
-        this.formulario = formulario;
     }
 }
