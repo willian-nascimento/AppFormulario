@@ -1,0 +1,12 @@
+POST http://localhost:8080/api/cadastro/salvar
+Content-Type: application/json
+
+{
+  "nameUser": "elbert ribeiro",
+  "endereco": {
+    "cep":"123456",
+    "cidade":  "teste",
+    "bairro": "testebairoo",
+    "numeroCasa": 23
+  }
+}
