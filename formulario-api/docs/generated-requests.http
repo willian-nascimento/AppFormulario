@@ -4,9 +4,12 @@ Content-Type: application/json
 {
   "nameUser": "elbert ribeiro",
   "endereco": {
-    "cep":"123456",
-    "cidade":  "teste",
+    "cep": "123456",
+    "cidade": "teste",
     "bairro": "testebairoo",
     "numeroCasa": 23
+  },
+  "atencaobasica": {
+    "educacao": true
   }
 }
