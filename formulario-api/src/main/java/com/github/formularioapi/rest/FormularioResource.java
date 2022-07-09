@@ -9,10 +9,7 @@ import com.github.formularioapi.core.util.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/cadastro")
@@ -20,6 +17,7 @@ public class FormularioResource {
     @Autowired FormularioService formularioService;
 
     @PostMapping("/salvar")
+    @CrossOrigin(origins = "http://localhost:19006/")
     public ResponseEntity<String> realizaCadastro(@RequestBody FormularioDTO dto) {
         Formulario formulario = ObjectMapper.map(dto, Formulario.class);
         Endereco endereco = ObjectMapper.map(dto.getEndereco(), Endereco.class);
