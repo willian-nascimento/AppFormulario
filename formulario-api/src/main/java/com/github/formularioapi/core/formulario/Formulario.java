@@ -4,12 +4,12 @@ import com.github.formularioapi.core.endereco.Endereco;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Document public class Formulario {
-    @Id private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
     private String nameUser;
 
     @OneToMany(cascade = CascadeType.PERSIST) @JoinColumn(name = "cep")
