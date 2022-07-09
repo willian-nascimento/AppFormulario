@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, Text, View, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '../components/Button';
 import { TimeLine } from '../components/TimeLine';
 import { ButtonSelect } from '../components/ButtonSelect';
 import { InputText } from '../components/InputText';
 
-import { ClientApi } from '../models/ClientApi';
+// import { ClientApi } from '../models/ClientApi';
+import api from '../services/api';
 
 import { Colors, Spacing } from "../styles";
 import colors from "../styles/colors";
@@ -16,49 +16,114 @@ import spacing from "../styles/spacing";
 
 export function DadosPessoais() {
 
-    const navigation = useNavigation();
+    const [date, setDate] = useState({
+        Cidade: '',
+        Agrovila: '',
+        PessoasCasa: '',
+        PessoasMunicipios: '',
+        Estado: '',
+        Titulo: '',
+        PessoasVotam: '',
+        VotoMunicipio: '',
+        RendaFamiliar: '',
+        Producao: '',
+    });
 
-    function handleStart() {
-        new ClientApi().conectApi();
+    const forms = async () => {
+        try {
+
+            console.log(date);
+
+            const response = await api.post('api/cadastro/salvar', date);
+            const res = response.data;
+
+            console.log(res);
+
+            if (res.error){
+                alert(res.message)
+                return false;
+            } else {
+                console.log(date);
+            }
+        } catch (error) {
+            alert(error.message);
+        }
     }
+
+    // function handleStart() {
+    //     new ClientApi().conectApi();
+    // }
 
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.titlePerson}>Dados Pessoais</Text>
             <TimeLine />
+
             <View style={styles.inputView}>
+
                 <InputText
                     style={styles.text}
                     textTitle='Cidade'
-                    textPlaceholder={''} />
+                    textPlaceholder={''}
+                    value={date.Cidade}
+                    onChangeText={(text) => setDate({...date, ...setDate})} />
                 <InputText
                     style={styles.text}
                     textTitle='Agrovila'
-                    textPlaceholder={''} />
+                    textPlaceholder={''}
+                    value={date.Agrovila}
+                    onChangeText={(text) => setDate({...date, ...setDate})} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidade de pessoas que residem na casa'
-                    textPlaceholder={''} />
+                    textPlaceholder={''}
+                    value={date.PessoasCasa}
+                    onChangeText={(text) => setDate({...date, ...setDate})} />
                 <InputText
                     style={styles.text}
-                    textTitle='Quantidade pessoas que não residem no município' textPlaceholder={''} />
+                    textTitle='Quantidade pessoas que não residem no município' 
+                    textPlaceholder={''}
+                    value={date.PessoasMunicipios}
+                    onChangeText={(text) => setDate({...date, ...setDate})} />
                 <InputText
                     style={styles.text}
                     textTitle='Para qual estado mudou-se'
-                    textPlaceholder={''} />
+                    textPlaceholder={''}
+                    value={date.Estado}
+                    onChangeText={(text) => setDate({...date, ...setDate})} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidade de título transferido'
-                    textPlaceholder={''} />
+                    textPlaceholder={''}
+                    value={date.Titulo}
+                    onChangeText={(text) => setDate({...date, ...setDate})} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidades de pessoas que votam'
-                    textPlaceholder={''} />
+                    textPlaceholder={''}
+                    value={date.PessoasVotam}
+                    onChangeText={(text) => setDate({...date, ...setDate})} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidade de pessoas que votam no município'
-                    textPlaceholder={''} />
+                    textPlaceholder={''}
+                    value={date.VotoMunicipio}
+                    onChangeText={(text) => setDate({...date, ...setDate})} />
+                <InputText
+                    style={styles.text}
+                    textTitle='Principal fonte de renda da família'
+                    textPlaceholder={''}
+                    value={date.RendaFamiliar}
+                    onChangeText={(text) => setDate({...date, ...setDate})} />
+                <InputText
+                    style={styles.text}
+                    textTitle='Tipo de produção'
+                    textPlaceholder={''}
+                    value={date.Producao}
+                    onChangeText={(text) => setDate({...date, ...setDate})} />
+
                 <View style={styles.select}>
+                    <ButtonSelect title={'Todos'} active={false} />
                     <ButtonSelect title={'Educação'} active={true} />
                     <ButtonSelect title={'Saneamento'} active={true} />
                     <ButtonSelect title={'Transporte'} active={true} />
@@ -67,19 +132,10 @@ export function DadosPessoais() {
                     <ButtonSelect title={'Esporte e Lazer'} active={true} />
                 </View>
 
-                <InputText
-                    style={styles.text}
-                    textTitle='Principal fonte de renda da família'
-                    textPlaceholder={''} />
-                <InputText
-                    style={styles.text}
-                    textTitle='Tipo de produção'
-                    textPlaceholder={''} />
-
-                <Button
+                <Button 
                     color='default'
                     title='Enviar'
-                    onPress={handleStart}
+                    onPress={forms}
                 />
             </View>
         </ScrollView>
@@ -123,19 +179,15 @@ const styles = StyleSheet.create({
         top: 15,
         borderRadius: 10
     },
-    button: {
-        top: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
     select: {
         position: 'relative',
-        flex: 1,
+        flex: 0.6,
+        padding: 9,
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'stretch',
         width: '100%',
         left: -115,
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-between',
     }
 })
