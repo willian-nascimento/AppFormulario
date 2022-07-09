@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
         top: spacing.px7,
         width:110,
         height:46,
-        borderRadius:16,
+        borderRadius:13,
         backgroundColor: Colors.default.red
     },
     containerActice:{

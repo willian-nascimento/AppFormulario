@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         position: 'relative',
         left: 115,
-        top: spacing.px7,
+        top: spacing.px10,
         width:135,
         height:46,
         borderRadius:5,

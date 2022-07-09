@@ -2,14 +2,22 @@ POST http://localhost:8080/api/cadastro/salvar
 Content-Type: application/json
 
 {
-  "nameUser": "elbert ribeiro",
+  "nameUser": "string",
+  "quantidadeMoradores": 0,
+  "zonaEleitoral": "string",
+  "fonteRenda": "string",
   "endereco": {
-    "cep": "123456",
-    "cidade": "teste",
-    "bairro": "testebairoo",
-    "numeroCasa": 23
+    "cep": "string",
+    "cidade": "string",
+    "agrovila": "string",
+    "numeroCasa": 0
   },
   "atencaobasica": {
-    "educacao": true
+    "educacao": true,
+    "saneamento": true,
+    "transporte": true,
+    "saude": true,
+    "agricultura": true,
+    "esporteLazer": true
   }
 }
