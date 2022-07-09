@@ -1,4 +1,4 @@
-package com.github.formularioapi.core.dto;
+package com.github.formularioapi.core.endereco;
 
 public class EnderecoDTO {
     private String cep;

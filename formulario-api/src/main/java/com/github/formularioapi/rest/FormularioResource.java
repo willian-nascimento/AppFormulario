@@ -1,6 +1,7 @@
 package com.github.formularioapi.rest;
 
-import com.github.formularioapi.core.dto.FormularioDTO;
+import com.github.formularioapi.core.atencaobasica.AtencaoBasica;
+import com.github.formularioapi.core.formulario.FormularioDTO;
 import com.github.formularioapi.core.endereco.Endereco;
 import com.github.formularioapi.core.formulario.Formulario;
 import com.github.formularioapi.core.formulario.FormularioService;
@@ -22,7 +23,9 @@ public class FormularioResource {
     public ResponseEntity<String> realizaCadastro(@RequestBody FormularioDTO dto) {
         Formulario formulario = ObjectMapper.map(dto, Formulario.class);
         Endereco endereco = ObjectMapper.map(dto.getEndereco(), Endereco.class);
+        AtencaoBasica atencaoBasica = ObjectMapper.map(dto.getAtencaobasica(), AtencaoBasica.class);
         formulario.setEndereco(endereco);
+        formulario.setAtencaoBasica(atencaoBasica);
         return new ResponseEntity<>(formularioService.save(formulario),HttpStatus.CREATED);
     }
 }
