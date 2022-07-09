@@ -1,57 +1,16 @@
 package com.github.formularioapi.core.endereco;
 
-import com.github.formularioapi.core.formulario.Formulario;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
-@Document public class Endereco {
-    @Id private String cep;
+@Data @Document public class Endereco {
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) int id;
+    private String cep;
     private String cidade;
-    private String agovila;
+    private String agrovila;
     private int numeroCasa;
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Formulario formulario;
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getAgovila() {
-        return agovila;
-    }
-
-    public void setAgovila(String agovila) {
-        this.agovila = agovila;
-    }
-
-    public int getNumeroCasa() {
-        return numeroCasa;
-    }
-
-    public void setNumeroCasa(int numeroCasa) {
-        this.numeroCasa = numeroCasa;
-    }
-
-    public Formulario getFormulario() {
-        return formulario;
-    }
-
-    public void setFormulario(Formulario formulario) {
-        this.formulario = formulario;
-    }
 }
