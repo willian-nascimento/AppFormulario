@@ -1,7 +1,5 @@
 package com.github.formularioapi.rest;
 
-import com.github.formularioapi.core.atencaobasica.AtencaoBasicaDTO;
-import com.github.formularioapi.core.endereco.EnderecoDTO;
 import com.github.formularioapi.core.formulario.FormularioDTO;
 import com.github.formularioapi.core.formulario.FormularioService;
 import org.junit.jupiter.api.Test;
@@ -17,28 +15,23 @@ import org.springframework.http.ResponseEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class FormularioResourceTest {
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) class FormularioResourceTest {
     @Autowired private TestRestTemplate testRestTemplate;
 
     @Autowired private FormularioService formularioService;
 
-    @Test void carregaIdTest(){
+    @Test void carregaIdTest() {
         FormularioDTO dto = new FormularioDTO();
-        EnderecoDTO enderecoDTO = new EnderecoDTO();
-        AtencaoBasicaDTO atencaoBasicaDTO = new AtencaoBasicaDTO();
-        enderecoDTO.setCep("1234");
+        dto.setCep("1234");
         dto.setNameUser("Teste");
-        atencaoBasicaDTO.setAgricultura(true);
-        atencaoBasicaDTO.setEducacao(true);
-        atencaoBasicaDTO.setEsporteLazer(true);
-        atencaoBasicaDTO.setSaneamento(true);
-        dto.setEndereco(enderecoDTO);
-        dto.setAtencaobasica(atencaoBasicaDTO);
+        dto.setAgricultura(true);
+        dto.setEducacao(true);
+        dto.setEsporteLazer(true);
+        dto.setSaneamento(true);
 
         HttpEntity<FormularioDTO> httpEntity = new HttpEntity<>(dto);
-        ResponseEntity<String> response = testRestTemplate
-                .exchange("/api/cadastro/salvar", HttpMethod.POST, httpEntity, String.class);
+        ResponseEntity<String> response =
+                testRestTemplate.exchange("/api/cadastro/salvar", HttpMethod.POST, httpEntity, String.class);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         formularioService.delete(response.getBody());
     }
