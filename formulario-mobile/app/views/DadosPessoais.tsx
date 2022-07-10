@@ -6,7 +6,6 @@ import { TimeLine } from '../components/TimeLine';
 import { ButtonSelect } from '../components/ButtonSelect';
 import { InputText } from '../components/InputText';
 
-// import { ClientApi } from '../models/ClientApi';
 import api from '../services/api';
 
 import { Colors, Spacing } from "../styles";
@@ -17,7 +16,7 @@ import spacing from "../styles/spacing";
 export function DadosPessoais() {
 
     const [date, setDate] = useState({
-        Cidade: '',
+        Cidade:'',
         Agrovila: '',
         PessoasCasa: '',
         PessoasMunicipios: '',
@@ -37,9 +36,8 @@ export function DadosPessoais() {
             const response = await api.post('api/cadastro/salvar', date);
             const res = response.data;
 
-            console.log(res);
 
-            if (res.error){
+            if (res.error) {
                 alert(res.message)
                 return false;
             } else {
@@ -49,10 +47,6 @@ export function DadosPessoais() {
             alert(error.message);
         }
     }
-
-    // function handleStart() {
-    //     new ClientApi().conectApi();
-    // }
 
     return (
         <ScrollView style={styles.container}>
@@ -66,61 +60,61 @@ export function DadosPessoais() {
                     textTitle='Cidade'
                     textPlaceholder={''}
                     value={date.Cidade}
-                    onChangeText={(text) => setDate({...date, ...setDate})} />
+                    onChangeText={(text) => setDate({ ...date, Cidade : text })} />
                 <InputText
                     style={styles.text}
                     textTitle='Agrovila'
                     textPlaceholder={''}
                     value={date.Agrovila}
-                    onChangeText={(text) => setDate({...date, ...setDate})} />
+                    onChangeText={(text) => setDate({ ...date, Agrovila : text })} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidade de pessoas que residem na casa'
                     textPlaceholder={''}
                     value={date.PessoasCasa}
-                    onChangeText={(text) => setDate({...date, ...setDate})} />
+                    onChangeText={(text) => setDate({ ...date, PessoasCasa : text })} />
                 <InputText
                     style={styles.text}
-                    textTitle='Quantidade pessoas que não residem no município' 
+                    textTitle='Quantidade pessoas que não residem no município'
                     textPlaceholder={''}
                     value={date.PessoasMunicipios}
-                    onChangeText={(text) => setDate({...date, ...setDate})} />
+                    onChangeText={(text) => setDate({ ...date, PessoasMunicipios : text})} />
                 <InputText
                     style={styles.text}
                     textTitle='Para qual estado mudou-se'
                     textPlaceholder={''}
                     value={date.Estado}
-                    onChangeText={(text) => setDate({...date, ...setDate})} />
+                    onChangeText={(text) => setDate({ ...date, Estado : text})} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidade de título transferido'
                     textPlaceholder={''}
                     value={date.Titulo}
-                    onChangeText={(text) => setDate({...date, ...setDate})} />
+                    onChangeText={(text) => setDate({ ...date, Titulo : text })} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidades de pessoas que votam'
                     textPlaceholder={''}
                     value={date.PessoasVotam}
-                    onChangeText={(text) => setDate({...date, ...setDate})} />
+                    onChangeText={(text) => setDate({ ...date, PessoasVotam : text })} />
                 <InputText
                     style={styles.text}
                     textTitle='Quantidade de pessoas que votam no município'
                     textPlaceholder={''}
                     value={date.VotoMunicipio}
-                    onChangeText={(text) => setDate({...date, ...setDate})} />
+                    onChangeText={(text) => setDate({ ...date, VotoMunicipio : text })} />
                 <InputText
                     style={styles.text}
                     textTitle='Principal fonte de renda da família'
                     textPlaceholder={''}
                     value={date.RendaFamiliar}
-                    onChangeText={(text) => setDate({...date, ...setDate})} />
+                    onChangeText={(text) => setDate({ ...date, RendaFamiliar : text })} />
                 <InputText
                     style={styles.text}
                     textTitle='Tipo de produção'
                     textPlaceholder={''}
                     value={date.Producao}
-                    onChangeText={(text) => setDate({...date, ...setDate})} />
+                    onChangeText={(text) => setDate({ ...date, Producao : text })} />
 
                 <View style={styles.select}>
                     <ButtonSelect title={'Todos'} active={false} />
@@ -132,7 +126,7 @@ export function DadosPessoais() {
                     <ButtonSelect title={'Esporte e Lazer'} active={true} />
                 </View>
 
-                <Button 
+                <Button
                     color='default'
                     title='Enviar'
                     onPress={forms}
