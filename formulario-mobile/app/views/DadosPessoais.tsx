@@ -8,24 +8,60 @@ import { InputText } from '../components/InputText';
 
 import api from '../services/api';
 
-import { Colors, Spacing } from "../styles";
-import colors from "../styles/colors";
-import spacing from "../styles/spacing";
+import { Colors, Spacing } from '../styles';
+import colors from '../styles/colors';
+import spacing from '../styles/spacing';
 
+const [button, setbutton] = useState([
+    {
+        id: '1',
+        label: 'Educação',
+        checked: false,
+    },
+    {
+        id: '2',
+        label: 'Saneamento',
+        checked: false,
+    },
+    {
+        id: '3',
+        label: 'Transporte',
+        checked: false,
+    },
+    {
+        id: '4',
+        label: 'Saúde',
+        checked: false,
+    },
+    {
+        id: '5',
+        label: 'Agricultura',
+        checked: false,
+    },
+    {
+        id: '6',
+        label: 'Esporte e Lazer',
+        checked: false,
+    },
+]);
 
 export function DadosPessoais() {
 
     const [date, setDate] = useState({
-        Cidade:'',
-        Agrovila: '',
-        PessoasCasa: '',
-        PessoasMunicipios: '',
-        Estado: '',
-        Titulo: '',
-        PessoasVotam: '',
-        VotoMunicipio: '',
-        RendaFamiliar: '',
-        Producao: '',
+        nameUser: '',
+        quantidadeMoradores: '',
+        zonaEleitoral: '',
+        fonteRenda: '',
+        cep: '',
+        cidade: '',
+        agrovila: '',
+        numeroCasa: '',
+        educacao: '',
+        saneamento: '',
+        transporte: '',
+        saude: '',
+        agricultura: '',
+        esporteLazer: ''
     });
 
     const forms = async () => {
@@ -50,75 +86,60 @@ export function DadosPessoais() {
 
     return (
         <ScrollView style={styles.container}>
-            <Text style={styles.titlePerson}>Dados Pessoais</Text>
+            <Text style={styles.titlePerson}>Bem vindo!</Text>
             <TimeLine />
 
             <View style={styles.inputView}>
-
                 <InputText
                     style={styles.text}
-                    textTitle='Cidade'
+                    textTitle='Nome'
                     textPlaceholder={''}
-                    value={date.Cidade}
-                    onChangeText={(text) => setDate({ ...date, Cidade : text })} />
+                    value={date.nameUser}
+                    onChangeText={(text) => setDate({ ...date, nameUser: text })} />
                 <InputText
                     style={styles.text}
-                    textTitle='Agrovila'
+                    textTitle='Zona Eleitoral'
                     textPlaceholder={''}
-                    value={date.Agrovila}
-                    onChangeText={(text) => setDate({ ...date, Agrovila : text })} />
-                <InputText
-                    style={styles.text}
-                    textTitle='Quantidade de pessoas que residem na casa'
-                    textPlaceholder={''}
-                    value={date.PessoasCasa}
-                    onChangeText={(text) => setDate({ ...date, PessoasCasa : text })} />
-                <InputText
-                    style={styles.text}
-                    textTitle='Quantidade pessoas que não residem no município'
-                    textPlaceholder={''}
-                    value={date.PessoasMunicipios}
-                    onChangeText={(text) => setDate({ ...date, PessoasMunicipios : text})} />
-                <InputText
-                    style={styles.text}
-                    textTitle='Para qual estado mudou-se'
-                    textPlaceholder={''}
-                    value={date.Estado}
-                    onChangeText={(text) => setDate({ ...date, Estado : text})} />
-                <InputText
-                    style={styles.text}
-                    textTitle='Quantidade de título transferido'
-                    textPlaceholder={''}
-                    value={date.Titulo}
-                    onChangeText={(text) => setDate({ ...date, Titulo : text })} />
-                <InputText
-                    style={styles.text}
-                    textTitle='Quantidades de pessoas que votam'
-                    textPlaceholder={''}
-                    value={date.PessoasVotam}
-                    onChangeText={(text) => setDate({ ...date, PessoasVotam : text })} />
-                <InputText
-                    style={styles.text}
-                    textTitle='Quantidade de pessoas que votam no município'
-                    textPlaceholder={''}
-                    value={date.VotoMunicipio}
-                    onChangeText={(text) => setDate({ ...date, VotoMunicipio : text })} />
+                    value={date.zonaEleitoral}
+                    onChangeText={(text) => setDate({ ...date, zonaEleitoral: text })} />
                 <InputText
                     style={styles.text}
                     textTitle='Principal fonte de renda da família'
                     textPlaceholder={''}
-                    value={date.RendaFamiliar}
-                    onChangeText={(text) => setDate({ ...date, RendaFamiliar : text })} />
+                    value={date.fonteRenda}
+                    onChangeText={(text) => setDate({ ...date, fonteRenda: text })} />
                 <InputText
                     style={styles.text}
-                    textTitle='Tipo de produção'
+                    textTitle='Para qual estado mudou-se'
                     textPlaceholder={''}
-                    value={date.Producao}
-                    onChangeText={(text) => setDate({ ...date, Producao : text })} />
+                    value={date.cep}
+                    onChangeText={(text) => setDate({ ...date, cep: text })} />
+                <InputText
+                    style={styles.text}
+                    textTitle='Cidade'
+                    textPlaceholder={''}
+                    value={date.cidade}
+                    onChangeText={(text) => setDate({ ...date, cidade: text })} />
+                <InputText
+                    style={styles.text}
+                    textTitle='Agrovila'
+                    textPlaceholder={''}
+                    value={date.agrovila}
+                    onChangeText={(text) => setDate({ ...date, agrovila: text })} />
+                <InputText
+                    style={styles.text}
+                    textTitle='Quantidades de pessoas que votam'
+                    textPlaceholder={''}
+                    value={date.numeroCasa}
+                    onChangeText={(text) => setDate({ ...date, numeroCasa: text })} />
 
                 <View style={styles.select}>
-                    <ButtonSelect title={'Todos'} active={false} />
-                    <ButtonSelect title={'Educação'} active={true} />
+
+                    <ButtonSelect 
+                    data={button}
+                    onChageDatasChoosed={ (button: any) => 
+                    console.log('dados', button)}
+                    title={'Educação'} active={true} />
                     <ButtonSelect title={'Saneamento'} active={true} />
                     <ButtonSelect title={'Transporte'} active={true} />
                     <ButtonSelect title={'Saúde'} active={true} />
@@ -151,10 +172,10 @@ const styles = StyleSheet.create({
     titlePerson: {
         position: 'absolute',
         left: spacing.px3,
-        top: 100,
+        top: 0,
         color: colors.white,
         fontWeight: '500',
-        fontSize: 14,
+        fontSize: 60,
     },
     titleAtencion: {
         position: 'absolute',
