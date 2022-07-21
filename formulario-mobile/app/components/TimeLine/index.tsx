@@ -13,12 +13,12 @@ export function TimeLine() {
 
 export const styles = StyleSheet.create({
     line:{
-        position:'absolute',
-        width: '83%',
-        height:7,
-        left: spacing.px3,
-        top: 80,
-        backgroundColor: colors.red,
-        borderRadius: 15
+      position:'absolute',
+      width: '83%',
+      height:7,
+      left: spacing.px3,
+      top: '15%',
+      backgroundColor: colors.red,
+      borderRadius: 15
     }
 });

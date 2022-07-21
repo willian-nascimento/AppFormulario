@@ -10,8 +10,8 @@ interface ButtonProps extends TouchableOpacityProps{
 
 export function Button({ title, color, ...rest }: ButtonProps){
     function setBackgrundColor(color: string){
-        if(color == 'gray'){
-            return { backgroundColor: 'rgba(5, 60, 94, 0.26)'}
+        if(color == 'red'){
+            return { backgroundColor: Colors.default.red}
         }else{
             return {backgroundColor: Colors.default.blue}
         }
