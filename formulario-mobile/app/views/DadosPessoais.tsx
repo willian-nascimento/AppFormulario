@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { ScrollView, Text, View, StyleSheet } from 'react-native';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 import { Button } from '../components/Button';
 import { TimeLine } from '../components/TimeLine';
-import { ButtonSelect } from '../components/ButtonSelect';
 import { InputText } from '../components/InputText';
 
 import api from '../services/api';
@@ -15,122 +15,140 @@ import spacing from "../styles/spacing";
 
 export function DadosPessoais() {
 
+    // multi-select DropDownPicker
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState([]);
+    const [itens, setItens] = useState([
+        { label: 'Educação', value: 'educacao' },
+        { label: 'Saneamento', value: 'saneamento' },
+        { label: 'Transporte', value: 'transporte' },
+        { label: 'Saúde', value: 'saude' },
+        { label: 'Agricultura', value: 'agricultura' },
+        { label: 'Esporte e Lazer', value: 'esporteLazer' }
+    ]);
+
     const [date, setDate] = useState({
-        Cidade:'',
-        Agrovila: '',
-        PessoasCasa: '',
-        PessoasMunicipios: '',
-        Estado: '',
-        Titulo: '',
-        PessoasVotam: '',
-        VotoMunicipio: '',
-        RendaFamiliar: '',
-        Producao: '',
+        nameUser: '',
+        quantidadeMoradores: '',
+        zonaEleitoral: '',
+        fonteRenda: '',
+        cep: '',
+        cidade: '',
+        agrovila: '',
+        numeroCasa: '',
     });
 
+    // Função para post api
     const forms = async () => {
         try {
 
-            console.log(date);
+            console.log(date, itens);
 
-            const response = await api.post('api/cadastro/salvar', date);
+            const response = await api.post('api/cadastro/salvar', date, itens);
             const res = response.data;
 
+            console.log(res);
 
             if (res.error) {
                 alert(res.message)
                 return false;
             } else {
-                console.log(date);
+                console.log(date, itens);
             }
         } catch (error) {
-            alert(error.message);
+            alert('erro:' + error)
         }
-    }
+    };
+
+    // função limpa formulario
+    const resetDate = () => {
+        Array.from(document.querySelectorAll('input')).forEach(
+            input => (input.value = ''))
+        setDate({
+            nameUser: '',
+            quantidadeMoradores: '',
+            zonaEleitoral: '',
+            fonteRenda: '',
+            cep: '',
+            cidade: '',
+            agrovila: '',
+            numeroCasa: '',
+        });
+    };
 
     return (
         <ScrollView style={styles.container}>
-            <Text style={styles.titlePerson}>Dados Pessoais</Text>
+            <Text style={styles.titlePerson}>Bem vindo!</Text>
             <TimeLine />
 
             <View style={styles.inputView}>
-
                 <InputText
                     style={styles.text}
-                    textTitle='Cidade'
+                    textTitle='Nome'
                     textPlaceholder={''}
-                    value={date.Cidade}
-                    onChangeText={(text) => setDate({ ...date, Cidade : text })} />
+                    value={date.nameUser}
+                    onChangeText={(text) => setDate({ ...date, nameUser: text })} />
                 <InputText
                     style={styles.text}
-                    textTitle='Agrovila'
+                    textTitle='Zona Eleitoral'
                     textPlaceholder={''}
-                    value={date.Agrovila}
-                    onChangeText={(text) => setDate({ ...date, Agrovila : text })} />
-                <InputText
-                    style={styles.text}
-                    textTitle='Quantidade de pessoas que residem na casa'
-                    textPlaceholder={''}
-                    value={date.PessoasCasa}
-                    onChangeText={(text) => setDate({ ...date, PessoasCasa : text })} />
-                <InputText
-                    style={styles.text}
-                    textTitle='Quantidade pessoas que não residem no município'
-                    textPlaceholder={''}
-                    value={date.PessoasMunicipios}
-                    onChangeText={(text) => setDate({ ...date, PessoasMunicipios : text})} />
-                <InputText
-                    style={styles.text}
-                    textTitle='Para qual estado mudou-se'
-                    textPlaceholder={''}
-                    value={date.Estado}
-                    onChangeText={(text) => setDate({ ...date, Estado : text})} />
-                <InputText
-                    style={styles.text}
-                    textTitle='Quantidade de título transferido'
-                    textPlaceholder={''}
-                    value={date.Titulo}
-                    onChangeText={(text) => setDate({ ...date, Titulo : text })} />
-                <InputText
-                    style={styles.text}
-                    textTitle='Quantidades de pessoas que votam'
-                    textPlaceholder={''}
-                    value={date.PessoasVotam}
-                    onChangeText={(text) => setDate({ ...date, PessoasVotam : text })} />
-                <InputText
-                    style={styles.text}
-                    textTitle='Quantidade de pessoas que votam no município'
-                    textPlaceholder={''}
-                    value={date.VotoMunicipio}
-                    onChangeText={(text) => setDate({ ...date, VotoMunicipio : text })} />
+                    value={date.zonaEleitoral}
+                    onChangeText={(text) => setDate({ ...date, zonaEleitoral: text })} />
                 <InputText
                     style={styles.text}
                     textTitle='Principal fonte de renda da família'
                     textPlaceholder={''}
-                    value={date.RendaFamiliar}
-                    onChangeText={(text) => setDate({ ...date, RendaFamiliar : text })} />
+                    value={date.fonteRenda}
+                    onChangeText={(text) => setDate({ ...date, fonteRenda: text })} />
                 <InputText
                     style={styles.text}
-                    textTitle='Tipo de produção'
+                    textTitle='Para qual estado mudou-se'
                     textPlaceholder={''}
-                    value={date.Producao}
-                    onChangeText={(text) => setDate({ ...date, Producao : text })} />
+                    value={date.cep}
+                    onChangeText={(text) => setDate({ ...date, cep: text })} />
+                <InputText
+                    style={styles.text}
+                    textTitle='Cidade'
+                    textPlaceholder={''}
+                    value={date.cidade}
+                    onChangeText={(text) => setDate({ ...date, cidade: text })} />
+                <InputText
+                    style={styles.text}
+                    textTitle='Agrovila'
+                    textPlaceholder={''}
+                    value={date.agrovila}
+                    onChangeText={(text) => setDate({ ...date, agrovila: text })} />
+                <InputText
+                    style={styles.text}
+                    textTitle='Quantidades de pessoas que votam'
+                    textPlaceholder={''}
+                    value={date.numeroCasa}
+                    onChangeText={(text) => setDate({ ...date, numeroCasa: text })} />
 
-                <View style={styles.select}>
-                    <ButtonSelect title={'Todos'} active={false} />
-                    <ButtonSelect title={'Educação'} active={true} />
-                    <ButtonSelect title={'Saneamento'} active={true} />
-                    <ButtonSelect title={'Transporte'} active={true} />
-                    <ButtonSelect title={'Saúde'} active={true} />
-                    <ButtonSelect title={'Agricultura'} active={true} />
-                    <ButtonSelect title={'Esporte e Lazer'} active={true} />
-                </View>
-
-                <Button
-                    color='default'
-                    title='Enviar'
-                    onPress={forms}
+                <DropDownPicker
+                    multiple={true}
+                    open={open}
+                    value={value}
+                    items={itens}
+                    setOpen={setOpen}
+                    setValue={setValue}
+                    setItems={setItens}
+                    placeholder='Selecione um item'
+                    style={styles.buttonSelect}
+                    textStyle={styles.buttonSelectText}
                 />
+                <View style={styles.CleanSend}>
+                    <Button
+                        color='default'
+                        title='Enviar'
+                        onPress={forms}
+                    />
+                    <Button
+                        color='red'
+                        title='Limpar'
+                        onPress={resetDate}
+                    />
+                </View>
             </View>
         </ScrollView>
     );
@@ -151,18 +169,10 @@ const styles = StyleSheet.create({
     titlePerson: {
         position: 'absolute',
         left: spacing.px3,
-        top: 100,
+        top: '7%',
         color: colors.white,
         fontWeight: '500',
-        fontSize: 14,
-    },
-    titleAtencion: {
-        position: 'absolute',
-        left: 140,
-        top: 100,
-        color: colors.white,
-        fontWeight: '500',
-        fontSize: 14,
+        fontSize: 60,
     },
     text: {
         fontWeight: '500',
@@ -173,15 +183,25 @@ const styles = StyleSheet.create({
         top: 15,
         borderRadius: 10
     },
-    select: {
-        position: 'relative',
-        flex: 0.6,
-        padding: 9,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        alignItems: 'stretch',
-        width: '100%',
-        left: -115,
-        justifyContent: 'space-between',
+    buttonSelect: {
+        justifyContent: 'center',
+        width: '93%',
+        height: 50,
+        borderRadius: 10,
+        padding: 10,
+        alignItems: 'center',
+        left: '4%',
+        top: spacing.px3,
+        backgroundColor: Colors.default.blue,
+    },
+    buttonSelectText: {
+        fontWeight: '600',
+        fontSize: 13,
+        textAlign: 'left',
+    },
+    CleanSend: {
+        right: '30%',
+        justifyContent: 'space-around',
+        flexDirection: 'row-reverse'
     }
 })
