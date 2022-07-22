@@ -1,30 +1,29 @@
-import React, { useState } from 'react';
-import { ScrollView, Text, View, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import {ScrollView, Text, View, StyleSheet} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-import { Button } from '../components/Button';
-import { TimeLine } from '../components/TimeLine';
-import { InputText } from '../components/InputText';
+import {Button} from '../components/Button';
+import {TimeLine} from '../components/TimeLine';
+import {InputText} from '../components/InputText';
 
 import api from '../services/api';
 
-import { Colors, Spacing } from "../styles";
+import {Colors, Spacing} from "../styles";
 import colors from "../styles/colors";
 import spacing from "../styles/spacing";
 
 
 export function DadosPessoais() {
 
-    // multi-select DropDownPicker
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState([]);
     const [itens, setItens] = useState([
-        { label: 'Educação', value: 'educacao' },
-        { label: 'Saneamento', value: 'saneamento' },
-        { label: 'Transporte', value: 'transporte' },
-        { label: 'Saúde', value: 'saude' },
-        { label: 'Agricultura', value: 'agricultura' },
-        { label: 'Esporte e Lazer', value: 'esporteLazer' }
+        {label: 'Educação', value: 'educacao'},
+        {label: 'Saneamento', value: 'saneamento'},
+        {label: 'Transporte', value: 'transporte'},
+        {label: 'Saúde', value: 'saude'},
+        {label: 'Agricultura', value: 'agricultura'},
+        {label: 'Esporte e Lazer', value: 'esporteLazer'}
     ]);
 
     const [date, setDate] = useState({
@@ -38,29 +37,16 @@ export function DadosPessoais() {
         numeroCasa: '',
     });
 
-    // Função para post api
     const forms = async () => {
         try {
-
-            console.log(date, itens);
-
+            // @ts-ignore
             const response = await api.post('api/cadastro/salvar', date, itens);
-            const res = response.data;
-
-            console.log(res);
-
-            if (res.error) {
-                alert(res.message)
-                return false;
-            } else {
-                console.log(date, itens);
-            }
+            console.log(response.request.response);
         } catch (error) {
             alert('erro:' + error)
         }
     };
 
-    // função limpa formulario
     const resetDate = () => {
         Array.from(document.querySelectorAll('input')).forEach(
             input => (input.value = ''))
@@ -79,51 +65,50 @@ export function DadosPessoais() {
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.titlePerson}>Bem vindo!</Text>
-            <TimeLine />
-
+            <TimeLine/>
             <View style={styles.inputView}>
                 <InputText
                     style={styles.text}
                     textTitle='Nome'
                     textPlaceholder={''}
                     value={date.nameUser}
-                    onChangeText={(text) => setDate({ ...date, nameUser: text })} />
+                    onChangeText={(text) => setDate({...date, nameUser: text})}/>
                 <InputText
                     style={styles.text}
                     textTitle='Zona Eleitoral'
                     textPlaceholder={''}
                     value={date.zonaEleitoral}
-                    onChangeText={(text) => setDate({ ...date, zonaEleitoral: text })} />
+                    onChangeText={(text) => setDate({...date, zonaEleitoral: text})}/>
                 <InputText
                     style={styles.text}
                     textTitle='Principal fonte de renda da família'
                     textPlaceholder={''}
                     value={date.fonteRenda}
-                    onChangeText={(text) => setDate({ ...date, fonteRenda: text })} />
+                    onChangeText={(text) => setDate({...date, fonteRenda: text})}/>
                 <InputText
                     style={styles.text}
                     textTitle='Para qual estado mudou-se'
                     textPlaceholder={''}
                     value={date.cep}
-                    onChangeText={(text) => setDate({ ...date, cep: text })} />
+                    onChangeText={(text) => setDate({...date, cep: text})}/>
                 <InputText
                     style={styles.text}
                     textTitle='Cidade'
                     textPlaceholder={''}
                     value={date.cidade}
-                    onChangeText={(text) => setDate({ ...date, cidade: text })} />
+                    onChangeText={(text) => setDate({...date, cidade: text})}/>
                 <InputText
                     style={styles.text}
                     textTitle='Agrovila'
                     textPlaceholder={''}
                     value={date.agrovila}
-                    onChangeText={(text) => setDate({ ...date, agrovila: text })} />
+                    onChangeText={(text) => setDate({...date, agrovila: text})}/>
                 <InputText
                     style={styles.text}
                     textTitle='Quantidades de pessoas que votam'
                     textPlaceholder={''}
                     value={date.numeroCasa}
-                    onChangeText={(text) => setDate({ ...date, numeroCasa: text })} />
+                    onChangeText={(text) => setDate({...date, numeroCasa: text})}/>
 
                 <DropDownPicker
                     multiple={true}
