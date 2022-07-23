@@ -14,10 +14,10 @@ export function TimeLine() {
 export const styles = StyleSheet.create({
     line:{
       position:'absolute',
-      width: '83%',
+      width: '74%',
       height:7,
       left: spacing.px3,
-      top: '15%',
+      top: '6%',
       backgroundColor: colors.red,
       borderRadius: 15
     }

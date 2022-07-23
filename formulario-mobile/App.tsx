@@ -6,6 +6,7 @@ import {
     Inter_700Bold
 } from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
+import 'react-native-gesture-handler';
 
 import { Router } from './app/router';
 
